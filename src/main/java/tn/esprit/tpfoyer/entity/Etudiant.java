@@ -24,6 +24,7 @@ public class Etudiant {
 
     String nomEtudiant;
     String prenomEtudiant;
+    //String classeEtudiant;
     long cinEtudiant;
     Date dateNaissance;
 
