@@ -22,9 +22,9 @@ public class Etudiant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long idEtudiant;
 
+    //test commit;
     String nomEtudiant;
     String prenomEtudiant;
-    //String classeEtudiant;
     long cinEtudiant;
     Date dateNaissance;
 
