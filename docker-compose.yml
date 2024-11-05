@@ -1,3 +1,5 @@
+version: "3.8"  # You can remove this line to avoid warnings
+
 services:
   mysqldb:
     image: mysql:5.7
@@ -11,7 +13,7 @@ services:
       - db:/var/lib/mysql
     networks:
       mynetwork:
-        ipv4_address: 172.20.0.2
+        ipv4_address: 192.168.100.2  # Update to a fixed IP in your new subnet
 
   app:
     depends_on:
@@ -24,7 +26,7 @@ services:
       - .m2:/root/.m2
     networks:
       mynetwork:
-        ipv4_address: 172.20.0.3
+        ipv4_address: 192.168.100.3  # Update to a different fixed IP in your new subnet
 
 volumes:
   db:
@@ -34,4 +36,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/24
+        - subnet: 192.168.100.0/24  # Use your new non-overlapping subnet 192.168.100.2
