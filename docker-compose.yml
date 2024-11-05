@@ -1,0 +1,37 @@
+services:
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: db
+    ports:
+      - "3307:3306"
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      mynetwork:
+        ipv4_address: 172.20.0.2
+
+  app:
+    depends_on:
+      - mysqldb
+    build: ./
+    restart: on-failure
+    ports:
+      - "8090:8090"
+    volumes:
+      - .m2:/root/.m2
+    networks:
+      mynetwork:
+        ipv4_address: 172.20.0.3
+
+volumes:
+  db:
+
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
