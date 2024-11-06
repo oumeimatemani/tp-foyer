@@ -27,6 +27,7 @@ public class Etudiant {
     String prenomEtudiant;
     long cinEtudiant;
     Date dateNaissance;
+    Niveau niveau ; 
 
     @ManyToMany(mappedBy = "etudiants")
     Set<Reservation> reservations;
